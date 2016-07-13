@@ -17,6 +17,7 @@ from matplotlib.pyplot import savefig
 from sklearn.metrics import make_scorer
 from sklearn.cross_validation import train_test_split
 
+import time
 
 def mean_absolute_percentage_error(y_true, y_pred):
     # convert pd.series to numpy.ndarray
@@ -169,7 +170,11 @@ print X_test.shape[1]
 param = {
     'hidden_units': 128, 'hidden_activation': 'prelu', 'batch_size': 128, 'input_dropout': 0.3, 'hidden_dropout': 0.3, 'hidden_layers': 4, 'nb_epoch': 30, 'batch_norm': False
 }
+
+start = time.time()
 score(param)
+end = time.time()
+print('Time elapsed: %f' % (end - start))
 
 '''
 # Trials object where the history of search will be stored
@@ -195,3 +200,4 @@ learn_fig = './learn.png'
 savefig(learn_fig)
 plt.show()
 '''
+
